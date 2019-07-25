@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- for content-type in header -->
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body style="font-size:20px;">
-	<form action="test" method="post">
+	<form action="add" method="post">
 		<fieldset>
 			<legend>Register</legend>
-			ID <input name="id"><br>
-			Name <input name="username"><br>
-			<input type="submit" value="sign in">
-		</fieldset>
-		<fieldset>
-			<legend>BMI</legend>
-			Height<input name="height"><br>
-			Weight<input name="weight"><br>
+			Username <input name="username"><br>
+			Password <input name="password"><br>
+			E-mail <input name="email"><br>
+			
+			Height <input name="height"><br>
+			Weight <input name="weight"><br>
 			
 			Math<input type="checkbox" name="subject" value="math">
 			English<input type="checkbox" name="subject" value="english">
 			Physics<input type="checkbox" name="subject" value="physics"><br>
-			<input type="submit" value="compute">
+			<input type="submit" value="sign in">
 		</fieldset>
 	</form>
 </body>
