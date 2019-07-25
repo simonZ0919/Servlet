@@ -8,4 +8,13 @@
 		<servlet-name>Result</servlet-name>
 		<url-pattern>/add</url-pattern>		
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>listuser</servlet-name>
+		<servlet-class>simpleTest.ListUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listuser</servlet-name>
+		<url-pattern>/list</url-pattern>		
+	</servlet-mapping>
 </web-app>
