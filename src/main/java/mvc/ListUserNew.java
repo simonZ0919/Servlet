@@ -1,61 +1,45 @@
-package simpleTest;
+package mvc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.PseudoColumnUsage;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.cj.protocol.Resultset;
+import dao.UserDAO;
+import entity.User;
 
-import util.DBUtils;
-
-public class ListUser extends HttpServlet {
-
-	@Override
+public class ListUserNew extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");	
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
 		
-		//select from database
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultset=null;
-		String sql="select * from t_user";
+		// access database through dao
+		UserDAO dao=new UserDAO();
 		try {
-			connection = DBUtils.getConnection();
-			statement=connection.prepareStatement(sql);
-			resultset=statement.executeQuery();
-			
+			List<User> users=dao.findAll();
 			//output table
 			pw.println("<table border='1' width='60%' cellpadding='0' cellspacing='0'> ");
 			pw.println("<tr><th>id</th><th>Username</th><th>Password</th><th>Email</th><th>Action</th></tr>");
-			while(resultset.next()) {
-				int id=resultset.getInt("id");
-				String uname=resultset.getString("username");
-				String pwd=resultset.getString("password");
-				String email=resultset.getString("email");
+			for (User user : users) {
+				int id=user.getId();
+				String uname=user.getUsername();
+				String pwd=user.getPwd();
+				String email=user.getEmail();
 				
 				pw.println("<tr><td>"+id+"</td><td>"+uname+"</td><td>"+
-						pwd+"</td><td>"+email+"</td><td><a href='delete?id="+id+"'>Remove</a></td></tr>");
+						pwd+"</td><td>"+email+"</td><td><a href='deletenew?id="+id+"'>Remove</a></td></tr>");
 			}
 			pw.println("</table>");
 			pw.println("<p><a href='form.html'>Sign up</a></p>");//jump to form.html
 		} catch (Exception e) {
 			e.printStackTrace();
 			pw.println("System error. Please retry later");
-		} finally {
-			DBUtils.close(connection, statement, resultset);
-		}	
+		}
 	}
-	
 }

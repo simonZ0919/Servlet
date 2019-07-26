@@ -17,4 +17,40 @@
 		<servlet-name>listuser</servlet-name>
 		<url-pattern>/list</url-pattern>		
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deluser</servlet-name>
+		<servlet-class>simpleTest.DelUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deluser</servlet-name>
+		<url-pattern>/delete</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>listuserNew</servlet-name>
+		<servlet-class>mvc.ListUserNew</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listuserNew</servlet-name>
+		<url-pattern>/listnew</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>adduser</servlet-name>
+		<servlet-class>mvc.AddUserNew</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adduser</servlet-name>
+		<url-pattern>/addnew</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>delusernew</servlet-name>
+		<servlet-class>mvc.DelUserNew</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delusernew</servlet-name>
+		<url-pattern>/deletenew</url-pattern>		
+	</servlet-mapping>
 </web-app>

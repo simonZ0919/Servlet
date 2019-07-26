@@ -31,12 +31,12 @@ public class UserForm extends HttpServlet{
 		String email=request.getParameter("email");
 		
 		// arrays of string, no selection:return null
-		String[] subject=request.getParameterValues("subject");
-		if(subject!=null) {
-			for (String sbj : subject) {
-				System.out.println(sbj);
-			}			
-		}
+//		String[] subject=request.getParameterValues("subject");
+//		if(subject!=null) {
+//			for (String sbj : subject) {
+//				System.out.println(sbj);
+//			}			
+//		}
 		
 		//response header, type of response, charset, default:iso8859-1, also for println()
 		response.setContentType("text/html;charset=utf-8");	
