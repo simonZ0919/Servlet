@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,20 +24,13 @@ public class ListUserNew extends HttpServlet{
 		UserDAO dao=new UserDAO();
 		try {
 			List<User> users=dao.findAll();
-			//output table
-			pw.println("<table border='1' width='60%' cellpadding='0' cellspacing='0'> ");
-			pw.println("<tr><th>id</th><th>Username</th><th>Password</th><th>Email</th><th>Action</th></tr>");
-			for (User user : users) {
-				int id=user.getId();
-				String uname=user.getUsername();
-				String pwd=user.getPwd();
-				String email=user.getEmail();
-				
-				pw.println("<tr><td>"+id+"</td><td>"+uname+"</td><td>"+
-						pwd+"</td><td>"+email+"</td><td><a href='deletenew?id="+id+"'>Remove</a></td></tr>");
-			}
-			pw.println("</table>");
-			pw.println("<p><a href='form.html'>Sign up</a></p>");//jump to form.html
+			
+			// bind data to request, by key-value
+			req.setAttribute("users", users);
+			// get dispatcher
+			RequestDispatcher dispatcher=req.getRequestDispatcher("listUser.jsp");
+			// call jsp
+			dispatcher.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 			pw.println("System error. Please retry later");
