@@ -53,4 +53,21 @@
 		<servlet-name>delusernew</servlet-name>
 		<url-pattern>/deletenew</url-pattern>		
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>cookieadd</servlet-name>
+		<servlet-class>cookie.AddCookie</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cookieadd</servlet-name>
+		<url-pattern>/addcookie</url-pattern>		
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>cookiefind</servlet-name>
+		<servlet-class>cookie.FindCookie</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cookiefind</servlet-name>
+		<url-pattern>/findcookie</url-pattern>		
+	</servlet-mapping>
 </web-app>

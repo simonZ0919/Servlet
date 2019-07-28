@@ -40,6 +40,10 @@
 								</td>
 								<td valign="middle" align="left">
 									<input type="text" class="inputgri" name="username" />
+									<%String msg=(String)request.getAttribute("message");%>
+									<span style="color: red">
+										<%=msg==null?"":msg%>
+									</span>
 								</td>
 							</tr>
 							<tr>

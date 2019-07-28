@@ -78,4 +78,33 @@ public class UserDAO {
 			DBUtils.close(connection, statement, null);
 		}
 	}
+	
+	public User findByUsername(String username) throws Exception {
+		User user=null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet=null;
+		
+		try {
+			connection = DBUtils.getConnection();
+			String sql="Select * from t_user where username=?";
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, username);
+			resultSet=statement.executeQuery();
+			
+			if(resultSet.next()) {
+				user=new User();
+				user.setId(resultSet.getInt(1));
+				user.setUsername(resultSet.getString("username"));
+				user.setPwd(resultSet.getString("password"));
+				user.setEmail(resultSet.getString("email"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			DBUtils.close(connection, statement, resultSet);
+		}
+		return user;
+	}
 }
