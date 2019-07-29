@@ -62,6 +62,7 @@
 		<servlet-name>cookieadd</servlet-name>
 		<url-pattern>/addcookie</url-pattern>		
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>cookiefind</servlet-name>
 		<servlet-class>cookie.FindCookie</servlet-class>
@@ -69,5 +70,23 @@
 	<servlet-mapping>
 		<servlet-name>cookiefind</servlet-name>
 		<url-pattern>/findcookie</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>cookiecount</servlet-name>
+		<servlet-class>cookie.CountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cookiecount</servlet-name>
+		<url-pattern>/count</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>sessiontest</servlet-name>
+		<servlet-class>Session.TestSession</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sessiontest</servlet-name>
+		<url-pattern>/session</url-pattern>		
 	</servlet-mapping>
 </web-app>
