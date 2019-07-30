@@ -83,10 +83,19 @@
 	
 	<servlet>
 		<servlet-name>sessiontest</servlet-name>
-		<servlet-class>Session.TestSession</servlet-class>
+		<servlet-class>session.TestSession</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>sessiontest</servlet-name>
 		<url-pattern>/session</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>userlogin</servlet-name>
+		<servlet-class>mvc.UserLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userlogin</servlet-name>
+		<url-pattern>/login</url-pattern>		
 	</servlet-mapping>
 </web-app>

@@ -8,6 +8,15 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 	<body>
+		<!-- session verify  -->
+		<% 
+			Object obj=session.getAttribute("user");
+		/* if no session found, redirect to listUser and return */
+			if(obj==null){
+				response.sendRedirect("login.jsp");
+				return;
+			}
+		%>
 		<div id="wrap">
 			<div id="top_content"> 
 				<div id="header">
