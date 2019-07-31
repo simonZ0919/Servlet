@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CommentServlet
  */
-@WebServlet("/commentServlet")
+@WebServlet("/comment")
 public class CommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

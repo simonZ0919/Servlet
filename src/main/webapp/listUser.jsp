@@ -81,7 +81,7 @@
 								<%=user.getEmail()%>
 							</td>
 							<td>
-								<a href="deletenew?id=<%=user.getId()%>" 
+								<a href="delete.do?id=<%=user.getId()%>" 
 								onclick="return confirm('Delete user <%=user.getUsername()%>?');">
 								delete</a>&nbsp;
 							</td>

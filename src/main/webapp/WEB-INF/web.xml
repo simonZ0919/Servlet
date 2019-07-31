@@ -28,33 +28,6 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>listuserNew</servlet-name>
-		<servlet-class>mvc.ListUserNew</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>listuserNew</servlet-name>
-		<url-pattern>/listnew</url-pattern>		
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>adduser</servlet-name>
-		<servlet-class>mvc.AddUserNew</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>adduser</servlet-name>
-		<url-pattern>/addnew</url-pattern>		
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>delusernew</servlet-name>
-		<servlet-class>mvc.DelUserNew</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>delusernew</servlet-name>
-		<url-pattern>/deletenew</url-pattern>		
-	</servlet-mapping>
-	
-	<servlet>
 		<servlet-name>cookieadd</servlet-name>
 		<servlet-class>cookie.AddCookie</servlet-class>
 	</servlet>
@@ -91,15 +64,6 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>userlogin</servlet-name>
-		<servlet-class>mvc.UserLogin</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>userlogin</servlet-name>
-		<url-pattern>/login</url-pattern>		
-	</servlet-mapping>
-	
-	<servlet>
 		<servlet-name>lifetime</servlet-name>
 		<servlet-class>life.LifeServlet</servlet-class>
 		<!-- configure init parameters -->		
@@ -116,11 +80,16 @@
 	</servlet-mapping>
 	
 	<filter>
-		<filter-name>commentfilter</filter-name>
+		<filter-name>commfilter</filter-name>
 		<filter-class>filter.CommentFilter</filter-class>
+		<!-- init param -->
+		<init-param>
+			<param-name>length</param-name>
+			<param-value>6</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>commentfilter</filter-name>
+		<filter-name>commfilter</filter-name>
 		<url-pattern>/comment</url-pattern>
 	</filter-mapping>
 	

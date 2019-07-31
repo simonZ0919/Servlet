@@ -14,15 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CommentFilter implements Filter{
-
+	private FilterConfig config;
+	
 	// construct after container starts
 	public CommentFilter() {
 		System.out.println("construct filter");
 	}
-	// init after instance filter
+	
+	// init after instance filter, store filterConfig
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		System.out.println("init filer");
+		config=filterConfig;
 	}
 	
 	@Override
@@ -34,16 +36,14 @@ public class CommentFilter implements Filter{
 		
 		req.setCharacterEncoding("utf-8");
 		String content=req.getParameter("content");
-		if(content.contains("fuck")) {// reject
-			response.getWriter().println("block comment");
-		}else {//pass filter
+		// get config value
+		int len=Integer.parseInt(config.getInitParameter("length"));
+		
+		if(content.length()>len) {// reject 
+			response.getWriter().println("too many words");
+		}else {
+			//chain.doFilter(): pass request to following modules
 			chain.doFilter(req, resp);
 		}
 	}
-
-	@Override
-	public void destroy() {
-		
-	}
-	
 }

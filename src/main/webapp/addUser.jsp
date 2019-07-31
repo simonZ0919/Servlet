@@ -31,7 +31,7 @@
 					<h1>
 						add User info:
 					</h1>
-					<form action="addnew" method="post">
+					<form action="add.do" method="post">
 						<table cellpadding="0" cellspacing="0" border="0"
 							class="form_table">
 							<tr>
