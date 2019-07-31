@@ -98,4 +98,35 @@
 		<servlet-name>userlogin</servlet-name>
 		<url-pattern>/login</url-pattern>		
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>lifetime</servlet-name>
+		<servlet-class>life.LifeServlet</servlet-class>
+		<!-- configure init parameters -->		
+		<init-param>
+			<param-name>city</param-name>
+			<param-value>Shanghai</param-value>
+		</init-param>		
+		<!-- create servlet after container starts, value: int>=0, priority:smaller -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lifetime</servlet-name>
+		<url-pattern>/life</url-pattern>	
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>commentfilter</filter-name>
+		<filter-class>filter.CommentFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>commentfilter</filter-name>
+		<url-pattern>/comment</url-pattern>
+	</filter-mapping>
+	
+	<!-- configure error handle page -->
+	<error-page>
+		<exception-type>javax.ServletException</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
 </web-app>

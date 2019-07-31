@@ -17,6 +17,15 @@ import entity.User;
 public class ListUserNew extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
+		// session verify  
+		HttpSession session=req.getSession();
+		Object obj=session.getAttribute("user");
+		/* if no session found, redirect to listUser and return */
+		if(obj==null){
+			resp.sendRedirect("login.jsp");
+			return;
+		}
+
 		req.setCharacterEncoding("utf-8");	
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter pw=resp.getWriter();

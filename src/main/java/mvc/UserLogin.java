@@ -37,7 +37,9 @@ public class UserLogin extends HttpServlet{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			resp.getWriter().println("System Error. Please retry later");
+			//resp.getWriter().println("System Error. Please retry later");
+			// throw exception to container
+			throw new ServletException(e);
 		}
 	}
 	
