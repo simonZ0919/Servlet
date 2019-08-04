@@ -109,6 +109,19 @@
 		<listener-class>listener.CountListener</listener-class>
 	</listener>
 	
+	<!--config param for jsp file  -->
+	<servlet>
+		<servlet-name>jf</servlet-name>
+		<jsp-file>/extras.jsp</jsp-file>
+		<init-param>
+			<param-name>uname</param-name>
+			<param-value>user1</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jf</servlet-name>
+		<url-pattern>/extra.html</url-pattern>
+	</servlet-mapping>
 	<!-- configure error handle page -->
 	<error-page>
 		<exception-type>javax.ServletException</exception-type>

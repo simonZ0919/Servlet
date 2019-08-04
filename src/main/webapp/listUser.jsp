@@ -1,6 +1,5 @@
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<%@page import="entity.*,java.util.*,java.text.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 	<head>
 		<title>listUsers</title>
@@ -8,35 +7,9 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 	<body>
-		<!-- session verify  -->
-		<% 
-			Object obj=session.getAttribute("user");
-		/* if no session found, redirect to listUser and return */
-			if(obj==null){
-				response.sendRedirect("login.jsp");
-				return;
-			}
-		%>
 		<div id="wrap">
 			<div id="top_content"> 
-				<div id="header">
-					<div id="rightheader">
-						<p>
-						<%
-							SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-							out.println(sdf.format(new Date()));
-						%>
-							<br />
-						</p>
-					</div>
-					<div id="topheader">
-						<h1 id="title">
-							<a href="#">main</a>
-						</h1>
-					</div>
-					<div id="navigation">
-					</div>
-				</div>
+				<%@include file="header.jsp" %>
 				<div id="content">
 					<p id="whereami">
 					</p>
@@ -61,33 +34,29 @@
 								Operation
 							</td>
 						</tr>
-						<%
-							/* get data from Servlet through key */
-							List<User> userList=(List<User>)request.getAttribute("users");
-							for(int i=0;i<userList.size();i++){
-								User user=userList.get(i);
-						%>
-						<tr class="row<%=i%2+1%>">
+						<!--traverse list, u:element, s:status-->
+						<c:forEach items="${users}" var="u" varStatus="s" >
+						<!--get index from status -->
+						<tr class="row${s.index%2+1}">
 							<td>
-								<%=user.getId()%>
+								${u.id}
 							</td>
 							<td>
-								<%=user.getUsername()%>
+								${u.username }
 							</td>
 							<td>
-								<%=user.getPwd()%>
+								${u.pwd }
 							</td>
 							<td>
-								<%=user.getEmail()%>
+								${u.email }
 							</td>
 							<td>
-								<a href="delete.do?id=<%=user.getId()%>" 
-								onclick="return confirm('Delete user <%=user.getUsername()%>?');">
+								<a href="delete.do?id=${u.id}" 
+								onclick="return confirm('Delete user ${u.username}?');">
 								delete</a>&nbsp;
 							</td>
-						</tr><%
-							}
-						%>
+						</tr>
+						</c:forEach>
 					</table>
 					<p>
 						<input type="button" class="button" value="Add User" 
@@ -95,11 +64,7 @@
 					</p>
 				</div>
 			</div>
-			<div id="footer">
-				<div id="footer_bg">
-				ABC@126.com
-				</div>
-			</div>
+			<%@include file="footer.jsp" %>
 		</div>
 	</body>
 </html>

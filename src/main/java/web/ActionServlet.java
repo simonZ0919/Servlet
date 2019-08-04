@@ -73,7 +73,7 @@ public class ActionServlet extends HttpServlet {
 			
 			//dispatch to addUser.jsp if name has been used
 			if(user!=null) {
-				request.setAttribute("message", "name has been used");
+				request.setAttribute("msg", "name has been used");
 				request.getRequestDispatcher("addUser.jsp").forward(request, response);
 			}
 			// save to database
@@ -139,7 +139,7 @@ public class ActionServlet extends HttpServlet {
 				session.setAttribute("user", "signIn");
 				resp.sendRedirect("list.do");
 			}else {
-				req.setAttribute("msg", "invalid username/password");
+				req.setAttribute("login_failed", "invalid username/password");
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
 			}
 		} catch (Exception e) {

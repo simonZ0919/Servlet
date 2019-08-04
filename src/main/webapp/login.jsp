@@ -1,5 +1,4 @@
-<%@ page import="java.util.*"  contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -12,21 +11,8 @@
 	<body>
 		<div id="wrap">
 			<div id="top_content">
-					<div id="header">
-						<div id="rightheader">
-							<p>
-								time:<%=new Date() %>
-								<br />
-							</p>
-						</div>
-						<div id="topheader">
-							<h1 id="title">
-								<a href="#">main</a>
-							</h1>
-						</div>
-						<div id="navigation">
-						</div>
-					</div>
+				<!-- insert code from file -->
+				<%@include file="header.jsp" %>
 				<div id="content">
 					<p id="whereami">
 					</p>
@@ -42,9 +28,8 @@
 								</td>
 								<td valign="middle" align="left">
 									<input type="text" class="inputgri" name="username" />
-									<%String msg=(String)request.getAttribute("msg"); %>
 									<span style="color:red">
-										<%=msg==null?"":msg %>
+										${login_failed}
 									</span>
 								</td>
 							</tr>
@@ -63,11 +48,7 @@
 					</form>
 				</div>
 			</div>
-			<div id="footer">
-				<div id="footer_bg">
-					ABC@126.com
-				</div>
-			</div>
+			<%@include file="footer.jsp" %>
 		</div>
 	</body>
 </html>
