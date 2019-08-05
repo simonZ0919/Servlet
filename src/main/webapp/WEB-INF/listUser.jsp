@@ -60,7 +60,7 @@
 					</table>
 					<p>
 						<input type="button" class="button" value="Add User" 
-						onclick="location='addUser.jsp'"/>
+						onclick="location='toAdd.do'"/>
 					</p>
 				</div>
 			</div>

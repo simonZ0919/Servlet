@@ -125,6 +125,6 @@
 	<!-- configure error handle page -->
 	<error-page>
 		<exception-type>javax.ServletException</exception-type>
-		<location>/error.jsp</location>
+		<location>/WEB-INF/error.jsp</location>
 	</error-page>
 </web-app>

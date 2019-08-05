@@ -39,6 +39,12 @@ public class ActionServlet extends HttpServlet {
 			processAdd(request,response);
 		}else if ("/delete".equals(path)) {
 			processDelete(request,response);
+		}else if ("/toLogin".equals(path)) {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").
+				forward(request, response);
+		}else if ("/toAdd".equals(path)) {
+			request.getRequestDispatcher("/WEB-INF/addUser.jsp").
+				forward(request, response);
 		}
 	}
 
@@ -100,7 +106,7 @@ public class ActionServlet extends HttpServlet {
 		
 		/* if no session found, redirect to listUser and return */
 		if(obj==null){
-			resp.sendRedirect("login.jsp");
+			resp.sendRedirect("toLogin.do");// cannot redirect to /WEB-INF/...
 			return;
 		}
 		req.setCharacterEncoding("utf-8");	
@@ -114,7 +120,7 @@ public class ActionServlet extends HttpServlet {
 			// bind data to request, by key-value
 			req.setAttribute("users", users);
 			// get dispatcher
-			RequestDispatcher dispatcher=req.getRequestDispatcher("listUser.jsp");
+			RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/listUser.jsp");
 			// call jsp
 			dispatcher.forward(req, resp);
 		} catch (Exception e) {
@@ -140,7 +146,7 @@ public class ActionServlet extends HttpServlet {
 				resp.sendRedirect("list.do");
 			}else {
 				req.setAttribute("login_failed", "invalid username/password");
-				req.getRequestDispatcher("login.jsp").forward(req, resp);
+				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
